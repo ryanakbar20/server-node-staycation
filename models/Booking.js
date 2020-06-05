@@ -16,7 +16,6 @@ const bookingSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    required: true,
   },
   itemId: {
     _id: {
