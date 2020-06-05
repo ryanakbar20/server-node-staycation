@@ -560,13 +560,13 @@ module.exports = {
         .sort({ date: -1 })
         .populate('memberId')
         .populate('bankId');
-      res.render('admin/booking', {
+      res.render('admin/Booking', {
         title: 'Staycation | Booking',
         user: req.session.user,
         booking,
       });
     } catch (error) {
-      res.redirect('/admin/booking');
+      res.redirect('/admin/Booking');
     }
   },
   bookingDetail: async (req, res) => {
@@ -575,7 +575,6 @@ module.exports = {
       const booking = await Booking.findOne({ _id: id })
         .populate('memberId')
         .populate('bankId');
-
       const alertMessage = req.flash('alertMessage');
       const alertStatus = req.flash('alertStatus');
       const alert = { message: alertMessage, status: alertStatus };
@@ -586,7 +585,7 @@ module.exports = {
         alert,
       });
     } catch (error) {
-      res.redirect('/admin/booking');
+      res.redirect('/admin/Booking');
     }
   },
   actionAccept: async (req, res) => {
@@ -597,11 +596,11 @@ module.exports = {
       await booking.save();
       req.flash('alertMessage', 'Success Accept Booking');
       req.flash('alertStatus', 'success');
-      res.redirect(`/admin/booking/${id}`);
+      res.redirect(`/admin/Booking/${id}`);
     } catch (error) {
       req.flash('alertMessage', `${error.message}`);
       req.flash('alertStatus', 'danger');
-      res.redirect(`/admin/booking/${id}`);
+      res.redirect(`/admin/Booking/${id}`);
     }
   },
   actionReject: async (req, res) => {
@@ -612,11 +611,11 @@ module.exports = {
       await booking.save();
       req.flash('alertMessage', 'Success Reject Booking');
       req.flash('alertStatus', 'success');
-      res.redirect(`/admin/booking/${id}`);
+      res.redirect(`/admin/Booking/${id}`);
     } catch (error) {
       req.flash('alertMessage', `${error.message}`);
       req.flash('alertStatus', 'danger');
-      res.redirect(`/admin/booking/${id}`);
+      res.redirect(`/admin/Booking/${id}`);
     }
   },
 };
