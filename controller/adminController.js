@@ -575,6 +575,7 @@ module.exports = {
       const booking = await Booking.findOne({ _id: id })
         .populate('memberId')
         .populate('bankId');
+
       const alertMessage = req.flash('alertMessage');
       const alertStatus = req.flash('alertStatus');
       const alert = { message: alertMessage, status: alertStatus };
